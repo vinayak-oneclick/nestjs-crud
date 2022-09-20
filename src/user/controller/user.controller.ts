@@ -3,13 +3,14 @@ import { Observable } from 'rxjs';
 import { UserPost } from '../models/post.interface';
 import { UserService } from '../services/user.service'; 
 import { UpdateResult, DeleteResult } from 'typeorm';
+import { PostRouteDto } from '../dto/post-route.dto';
 
 @Controller('user')
 export class UserController {
   constructor(private userService: UserService) {}
 
   @Post()
-  create(@Body() userPost: UserPost): Observable<UserPost>  {
+  create(@Body() userPost: UserPost, dto:PostRouteDto): Observable<UserPost>  {
     return this.userService.createUser(userPost)
   }
 
